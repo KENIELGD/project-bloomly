@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+
+/* ====================
+   General Styles
+==================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+  line-height: 1.6;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: border 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #7bb85d;
+}
+
+button {
+  background: #6aa84f;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-weight: bold;
+  margin-top: 16px;
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #5a9743;
+}
+
+a {
+  color: #6aa84f;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  padding: 1rem;
+}
+
+/* ====================
+   Auth Page
+==================== */
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right, #d9f1d9, #f2fff2);
+}
+
+.auth-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.auth-container:hover {
+  transform: translateY(-4px);
+}
+
+.auth-container .logo {
+  width: 40px;
+  margin-bottom: 1rem;
+}
