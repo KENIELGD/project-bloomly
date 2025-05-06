@@ -94,3 +94,400 @@ h1 {
   width: 40px;
   margin-bottom: 1rem;
 }
+
+/* ====================
+   Header
+==================== */
+header {
+  background: #6aa84f;
+  padding: 1rem 2rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-top h1 {
+  margin-right: 20px;
+}
+
+nav.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+nav.nav-links a {
+  color: white;
+  margin: 0 15px;
+  font-weight: 500;
+}
+
+nav.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+.header-icons a {
+  font-size: 1.4rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.header-icons a:hover {
+  color: #d4d4d4;
+}
+
+/* ====================
+   User Dropdown
+==================== */
+.user-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+#userInfo {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-right: 15px;
+}
+
+#userName,
+#userRole {
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+#userIcon {
+  font-size: 1.2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+#userIcon:hover {
+  color: #d4d4d4;
+}
+
+#userIcon i {
+  width: 20px;
+  height: 20px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background-color: white;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.dropdown-menu button {
+  background: #6aa84f;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dropdown-menu button:hover {
+  background-color: #5a9743;
+}
+
+/* ====================
+   Productos
+==================== */
+.productos {
+  padding: 2rem 1rem;
+}
+
+.productos h3 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.producto {
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  padding: 1rem;
+  max-width: 260px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.producto:hover {
+  transform: scale(1.03);
+}
+
+.producto button {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #76c893;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.producto button:hover {
+  background-color: #5cbf7a;
+}
+
+.producto h4 {
+  margin: 0.5rem 0;
+  color: #2f5f3d;
+}
+
+.producto p {
+  font-size: 0.95rem;
+  color: #333;
+  margin: 0.3rem 0;
+}
+
+#admin-panel {
+  max-width: 1200px;
+  margin: 2rem auto;
+  background: #fff1cc;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid #e6cd93;
+}
+
+.admin-section {
+  padding: 1.5rem 0;
+  border-top: 1px solid #ccc;
+  margin-top: 1.5rem;
+}
+
+/* ====================
+   Viewer Panel
+==================== */
+#viewer-panel {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #f5f8f6;
+  border-radius: 16px;
+}
+
+#viewer-panel h3 {
+  font-size: 2rem;
+  color: #3a6e3d;
+  margin-bottom: 1rem;
+}
+
+#viewer-panel p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+#productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+/* ====================
+   WhatsApp Float Button
+==================== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ====================
+   Nosotros Page
+==================== */
+#nosotros-section {
+  padding: 6rem 0 !important;
+}
+
+.nosotros-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.nosotros-texto {
+  flex: 1;
+  min-width: 280px;
+  max-width: 600px;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.nosotros-imagen {
+  flex: 1;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* ====================
+   Contact Page
+==================== */
+.contact-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form .form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #7bb85d;
+  outline: none;
+}
+
+.contact-form button[type="submit"] {
+  background: #6aa84f;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button[type="submit"]:hover {
+  background-color: #5a9743;
+}
+
+/* ====================
+   Footer
+==================== */
+.site-footer {
+  background-color: #6aa84f;
+  color: white;
+  padding: 2rem 1rem 1rem;
+  margin-top: 4rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.footer-brand {
+  max-width: 300px;
+}
+
+.footer-brand h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: white;
+  font-size: 1rem;
+  transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}

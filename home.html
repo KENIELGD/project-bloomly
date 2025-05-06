@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bloomly</title> <!-- Título de la página -->
+  <link rel="stylesheet" href="style.css" /> <!-- Enlace al archivo de estilos CSS -->
+  <script src="https://unpkg.com/feather-icons"></script> <!-- Carga la librería de iconos Feather -->
+</head>
+<body onload="loadUserData()"> <!-- Carga de datos de usuario cuando se carga la página -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {  // Cuando el contenido de la página se haya cargado
+      const icon = document.getElementById("userIcon");  // Icono del usuario
+      const menu = document.getElementById("userMenu");  // Menú desplegable del usuario
+
+      icon.addEventListener("click", (e) => {  // Evento de clic sobre el icono de usuario
+        e.preventDefault(); 
+        menu.style.display = menu.style.display === "block" ? "none" : "block";  // Mostrar/ocultar el menú
+      });
+
+      document.addEventListener("click", (e) => {  // Cerrar el menú si se hace clic fuera del icono o el menú
+        if (!icon.contains(e.target) && !menu.contains(e.target)) {
+          menu.style.display = "none";
+        }
+      });
+    });
+  </script>
+
+  <header>
+    <div class="header-top">
+      <h1>Bloomly</h1>  <!-- Nombre de la tienda en el encabezado -->
+      
+      <!-- Menú de navegación visible solo para el rol "admin" -->
+      <nav class="nav-links" data-visible-for="admin">
+        <a href="#" onclick="showInicio()">Inicio</a>
+      </nav>
+      
+      <!-- Menú de navegación visible solo para el rol "viewer" -->
+      <nav class="nav-links" data-visible-for="viewer">
+        <a href="#" onclick="showMisPlantas()">Mis plantas</a>
+        <a href="#" onclick="showNosotros()">Nosotros</a>
+        <a href="#" onclick="showContacto()">Contacto</a>
+      </nav>
+      
+      <div class="header-icons">
+        <a href="#" title="Buscar"><i data-feather="search"></i></a> <!-- Icono de búsqueda -->
+        <a href="#" title="Carrito"><i data-feather="shopping-cart"></i></a> <!-- Icono de carrito -->
+        
+        <!-- Menú desplegable del usuario -->
+        <div class="user-dropdown">
+          <div id="userInfo">
+            <p id="userName"></p>  <!-- Nombre del usuario -->
+            <p id="userRole"></p>  <!-- Rol del usuario (Admin o Viewer) -->
+          </div>
+          
+          <a href="#" id="userIcon" title="Perfil"><i data-feather="user"></i></a> <!-- Icono del usuario -->
+          
+          <!-- Menú desplegable -->
+          <div class="dropdown-menu" id="userMenu">
+            <button onclick="logout()">Cerrar sesión</button>  <!-- Opción para cerrar sesión -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <script>
+    const userRole = 'admin';  <!-- Se define que el usuario tiene el rol de "admin" -->
+  </script>
+
+  <!-- Panel de administración (solo visible para el rol "admin") -->
+  <section id="admin-panel" style="display:none;">
+    <div>
+      <h1>Panel de Administración</h1>
+      <div style="margin-bottom: 1rem;">
+        <button onclick="showSection('plantas')">🌿 Ver Plantas</button> <!-- Botón para ver las plantas -->
+        <button onclick="showSection('agregar')">➕ Agregar Planta</button> <!-- Botón para agregar una nueva planta -->
+        <button onclick="showSection('usuarios')">👥 Ver Usuarios</button> <!-- Botón para ver los usuarios -->
+      </div>
+
+      <!-- Sección para ver plantas -->
+      <div id="section-plantas" class="admin-section">
+        <h4>Lista de Plantas</h4>
+        <div class="grid" id="adminPlantGrid"></div>  <!-- Cuadrícula para mostrar las plantas -->
+      </div>
+
+      <!-- Sección para agregar una nueva planta -->
+      <div id="section-agregar" class="admin-section" style="display: none;">
+        <h4>Agregar Nueva Planta</h4>
+        <input type="text" id="newPlantName" placeholder="Nombre de la planta" />
+        <input type="text" id="newPlantPrice" placeholder="Precio ($)" />
+        <textarea id="newPlantDescription" placeholder="Descripción de la planta"></textarea>
+        <input type="text" id="newPlantImage" placeholder="URL de la imagen" />
+        <button onclick="addPlant()">Agregar Planta</button>  <!-- Botón para agregar la planta -->
+      </div>
+
+      <!-- Sección para ver usuarios registrados -->
+      <div id="section-usuarios" class="admin-section" style="display: none;">
+        <h4>Usuarios Registrados (Lectores)</h4>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+          <thead style="background: #eee;">
+            <tr>
+              <th>Nombre</th>
+              <th>Rol</th>
+              <th>Teléfono</th>
+              <th>Correo</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="userListTable" style="text-align: center;"></tbody>  <!-- Lista de usuarios -->
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Panel para usuarios "viewer" -->
+  <div id="viewer-panel" style="display:none;">
+    <h3>Bienvenido, amante de las plantas 🌿</h3>
+    <p>Explora las plantas disponibles y agrega tus favoritas al carrito.</p>
+    <div class="grid" id="productGrid"></div> <!-- Cuadrícula para mostrar los productos -->
+  </div>
+
+  <!-- Sección "Nosotros" -->
+  <section id="nosotros-section" style="display: none; padding: 2rem;">
+    <h2 style="text-align: center;">Sobre Nosotros</h2>
+    <div class="nosotros-content">
+      <div class="nosotros-texto">
+        <p>
+          Somos una empresa apasionada por las plantas, dedicada a ofrecer una amplia variedad de especies cuidadosamente cultivadas para embellecer tus espacios y mejorar tu bienestar...
+        </p>
+      </div>
+      <img src="./img/image-nosotros.png" alt="Imagen de Nosotros" class="nosotros-imagen"> <!-- Imagen de la sección "Nosotros" -->
+    </div>
+  </section>
+
+  <!-- Sección de Contacto -->
+  <section id="contacto-section" style="display: none; padding: 2rem;">
+    <h2 style="text-align: center;">¡Contáctanos!</h2>
+    <p style="text-align: center;">Déjanos un mensaje y te responderemos a la brevedad.</p>
+
+    <form id="contactForm" class="contact-form">  <!-- Formulario de contacto -->
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required placeholder="Tu nombre completo" />
+      </div>
+      <div class="form-group">
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" required placeholder="Tu correo electrónico" />
+      </div>
+      <div class="form-group">
+        <label for="phone">Teléfono:</label>
+        <input type="tel" id="phone" name="phone" placeholder="Tu número de teléfono (opcional)" />
+      </div>
+      <div class="form-group">
+        <label for="message">Mensaje:</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Escribe tu mensaje aquí"></textarea>
+      </div>
+      <button type="submit">Enviar Mensaje</button> <!-- Botón para enviar el mensaje -->
+    </form>
+  </section>
+
+  <!-- WhatsApp Float (icono flotante de WhatsApp) -->
+  <a href="https://wa.me/1234567890" class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp">
+    <i data-feather="message-circle"></i>
+  </a>
+
+  <!-- Pie de Página -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>🌿 Bloomly</h3>
+        <p>Conectando personas con la naturaleza.</p>
+      </div>
+      <div class="footer-links" data-visible-for="admin">
+        <a href="#" onclick="showInicio()">Inicio</a>
+        <a href="#">Términos</a>
+        <a href="#">Privacidad</a>
+      </div>
+
+      <div class="footer-links" data-visible-for="viewer">
+        <a href="#" onclick="showMisPlantas()">Mis plantas</a>
+        <a href="#" onclick="showNosotros()">Nosotros</a>
+        <a href="#" onclick="showContacto()">Contacto</a>
+        <a href="#">Términos</a>
+        <a href="#">Privacidad</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Bloomly. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>  <!-- Archivo de JavaScript externo -->
+  <script>
+    feather.replace(); // Reemplaza los iconos con la librería Feather
+  </script>
+</body>
+</html>

@@ -1,32 +1,50 @@
-<!DOCTYPE html> <!-- Declaración del tipo de documento HTML5 -->
-<html lang="es"> <!-- Idioma de la página está configurado a español (es) -->
-<head>
-  <meta charset="UTF-8" /> <!-- Define la codificación de caracteres como UTF-8 (caracteres especiales como tildes o ñ) -->
-  <title>Login - Bloomly</title> <!-- Título de la página que se muestra en la pestaña del navegador -->
-  <link rel="stylesheet" href="style.css" /> <!-- Vincula la hoja de estilos externa (CSS) para dar formato a la página -->
-</head>
-<body class="auth-page"> <!-- Cuerpo de la página con una clase para poder aplicar estilos específicos -->
+<!DOCTYPE html>
+<!-- Declaración del tipo de documento HTML5 -->
+<html lang="es">
+  <!-- Idioma de la página está configurado a español (es) -->
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Define la codificación de caracteres como UTF-8 (caracteres especiales como tildes o ñ) -->
+    <title>Login - Bloomly</title>
+    <!-- Título de la página que se muestra en la pestaña del navegador -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Vincula la hoja de estilos externa (CSS) para dar formato a la página -->
+  </head>
+  <body class="auth-page">
+    <!-- Cuerpo de la página con una clase para poder aplicar estilos específicos -->
 
-  <div class="auth-container"> <!-- Contenedor principal de la página de autenticación -->
-    <img src="./img/logo-forms.png" alt="Logo" class="logo" /> <!-- Logo de la página de login con un alt descriptivo para accesibilidad -->
-    
-    <h2>Bienvenido de nuevo.</h2> <!-- Encabezado de bienvenida -->
-    <p>Introduce tus credenciales para acceder a la cuenta</p> <!-- Mensaje explicativo debajo del encabezado -->
-    
-    <!-- Campo de entrada para el correo electrónico o nombre de usuario -->
-    <input type="text" id="email" placeholder="Ingresa tu correo electronico o tu nombre" />
-    
-    <!-- Campo de entrada para la contraseña -->
-    <input type="password" id="password" placeholder="Ingresa tu contraseña" />
-    
-    <!-- Botón que al hacer clic ejecuta la función login() definida en el script -->
-    <button onclick="login()">Iniciar sesión</button>
-    
-    <!-- Enlace a la página de registro para usuarios que no tienen cuenta -->
-    <p><a href="register.html">¿No tienes cuenta? Regístrate</a></p>
-  </div>
+    <div class="auth-container">
+      <!-- Contenedor principal de la página de autenticación -->
+      <img src="./img/logo-forms.png" alt="Logo" class="logo" />
+      <!-- Logo de la página de login con un alt descriptivo para accesibilidad -->
 
-  <!-- Vincula el archivo de JavaScript para manejar la lógica de la página (login, etc.) -->
-  <script src="script.js"></script>
-</body>
+      <h2>Bienvenido de nuevo.</h2>
+      <!-- Encabezado de bienvenida -->
+      <p>Introduce tus credenciales para acceder a la cuenta</p>
+      <!-- Mensaje explicativo debajo del encabezado -->
+
+      <!-- Campo de entrada para el correo electrónico o nombre de usuario -->
+      <input
+        type="text"
+        id="email"
+        placeholder="Ingresa tu correo electronico o tu nombre"
+      />
+
+      <!-- Campo de entrada para la contraseña -->
+      <input
+        type="password"
+        id="password"
+        placeholder="Ingresa tu contraseña"
+      />
+
+      <!-- Botón que al hacer clic ejecuta la función login() definida en el script -->
+      <button onclick="login()">Iniciar sesión</button>
+
+      <!-- Enlace a la página de registro para usuarios que no tienen cuenta -->
+      <p><a href="register.html">¿No tienes cuenta? Regístrate</a></p>
+    </div>
+
+    <!-- Vincula el archivo de JavaScript para manejar la lógica de la página (login, etc.) -->
+    <script src="script.js"></script>
+  </body>
 </html>
